@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cierra PanelScroll</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        height: 100vh;
+        width: 100vw;
+      }
+      div {
+        height: 50%;
+        width: 50%;
+        border: 2px solid black;
+        border-radius: 10px;
+        padding: 10px;
+        overflow-y: scroll;
+      }
+      div p {
+        text-align: justify;
+        font-size: 2em;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="div">
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi libero consequuntur quis veritatis molestias a itaque sint error dolores at adipisci velit rerum, non
+        sapiente provident delectus, nostrum repudiandae possimus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum reiciendis ad facere recusandae quia minima unde
+        deserunt quos, pariatur perferendis! Totam cupiditate vero reiciendis facere officiis qui voluptatibus odio distinctio. Lorem ipsum dolor sit amet consectetur, adipisicing
+        elit. Hic debitis animi fugiat odit dignissimos. Aliquid, aut accusamus veritatis quae ut, ab rem id officia praesentium est, exercitationem laudantium assumenda excepturi?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto culpa omnis provident suscipit autem ad incidunt fugit dicta earum animi consectetur libero
+        reprehenderit, tempore repudiandae, voluptas adipisci porro molestiae atque? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus ducimus enim delectus, quos
+        maiores alias beatae perspiciatis, ipsum recusandae maxime laboriosam temporibus? Magnam dolorum, modi alias sunt maiores fugiat qui. Lorem ipsum dolor sit, amet
+        consectetur adipisicing elit. Nesciunt expedita alias, quisquam tenetur dignissimos saepe debitis earum quia illo aliquid veniam quos, ipsam nobis amet deserunt provident
+        iste dolorum sint? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id, et provident! Molestiae repudiandae illo ut saepe pariatur, harum distinctio laboriosam
+        nisi consequuntur rerum numquam officia rem veniam eius expedita consectetur. Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, cupiditate laudantium nulla
+        nostrum nihil libero illum ipsa nam, voluptates magni est neque quam quisquam nisi laborum, deserunt excepturi quaerat tempore. Lorem ipsum dolor sit amet, consectetur
+        adipisicing elit. Distinctio deserunt architecto ut sed cupiditate, nobis optio id odio maxime est officia, dolores perspiciatis dolore laudantium cum ad, repudiandae
+        perferendis fugiat. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta ipsum, enim harum quos eveniet quod saepe alias praesentium laudantium doloremque ipsam!
+        Dicta obcaecati omnis quaerat dignissimos vel ab cumque quae. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores unde libero amet. Sint provident repellat
+        mollitia veniam veritatis? Repudiandae quas est ea at quasi dolorem dolor obcaecati aliquam esse praesentium? Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
+        modi voluptate cupiditate sed. Cumque numquam molestiae officia ab accusamus ad magnam id est cum autem. Recusandae dolore quaerat nam earum. Lorem ipsum dolor sit amet
+        consectetur adipisicing elit. Ullam aut sunt iusto dolore, voluptatem dolorum enim blanditiis cumque beatae quis ut esse illo distinctio animi repellendus cum. Quos, magni
+        qui! Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita saepe vel omnis ipsum amet obcaecati eos distinctio rerum doloribus mollitia, neque in veritatis
+        vitae. Harum aspernatur aut ut necessitatibus quos.
+      </p>
+    </div>
+    <script>
+      // Cogemos el div.
+      let div = document.getElementById('div');
+      // Creamos un botón.
+      button = document.createElement('button');
+      // Le añadimos texto y estilos al botón.
+      button.textContent = 'Cerrar';
+      button.style.width = '50%';
+      button.style.fontSize = '2em';
+      button.style.margin = '5px 0';
+
+      // Creamos un evento al hacer scroll.
+      div.addEventListener('scroll', function (ev) {
+        // Si el scroll llega a cierto punto del contenido del div.
+        if (div.scrollTop >= div.scrollHeight - 500) {
+          // Aparece el botón.
+          document.body.appendChild(button);
+          // Si no llega a ese punto.
+        } else {
+          // Se quita el botón.
+          document.body.removeChild(button);
+        }
+      });
+
+      // Creamos otro evento al pulsar el botón.
+      button.addEventListener('click', function () {
+        // Se quitan el div y el botón.
+        document.body.removeChild(div);
+        document.body.removeChild(button);
+      });
+    </script>
+  </body>
+</html>

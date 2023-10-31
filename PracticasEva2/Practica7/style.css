@@ -1,0 +1,26 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: 'Digital Clock';
+  src: url(DIGITALDREAM.ttf);
+}
+
+div {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  background-color: black;
+}
+p {
+  font-family: 'Digital Clock';
+  color: green;
+  font-size: 4em;
+}

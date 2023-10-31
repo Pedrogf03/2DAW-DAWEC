@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Temporizador</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div>
+      <p id="temp"></p>
+    </div>
+    <script>
+      // Función que, dado un tiempo, crea una cuenta atrás.
+      function timer() {
+        // Si se le pasa un único argumento a la función,
+        // comprobará que sea mayor que 0 y lo convertirá en formato minutos:segundos.
+        if (timer.arguments.length == 1) {
+          if (timer.arguments[0] < 0) {
+            // Si el dato pasado es menor que 0, imprime en pantalla un error y devuelve false.
+            document.getElementById('temp').innerHTML = 'Error. El tiempo dado no es valido.';
+            return false;
+          } else {
+            // El argumento serán los segundos y los minutos iniciarán en 0.
+            var segundos = timer.arguments[0];
+            var minutos = 0;
+          }
+          // Si se le pasan dos argumentos, comprobará que son válidos y los transformará
+          // en formato minutos:segundos.
+        } else if (timer.arguments.length == 2) {
+          if (timer.arguments[0] < 0 || timer.arguments[1] < 0) {
+            // Si alguno de los datos pasados son menores que 0, imprime en pantalla un error y devuelve false.
+            document.getElementById('temp').innerHTML = 'Error. El tiempo dado no es valido.';
+            return false;
+          } else {
+            // El primer argumento son los minutos y el segundo los segundos.
+            var minutos = timer.arguments[0];
+            var segundos = timer.arguments[1];
+          }
+        }
+
+        // Mientras que los segundos sean mayores que 60, se irán sumando minutos y restando los segundos de 60 en 60.
+        while (segundos >= 60) {
+          minutos++;
+          segundos -= 60;
+        }
+
+        // Primero se muestra el valor incial del contador.
+        // Si los segundos son menores que 10, muestra un cero antes
+        // (Esto último es para que parezca un reloj y se vea mejor el resultado).
+        if (segundos < 10) {
+          document.getElementById('temp').innerHTML = minutos + ':0' + segundos;
+        } else {
+          document.getElementById('temp').innerHTML = minutos + ':' + segundos;
+        }
+
+        // Intervalo que va restando tiempo hasta llegar a 0.
+        const intervalo = setInterval(function () {
+          // Si los minutos y los segundos son 0, el intervalo para.
+          if (minutos == 0 && segundos == 0) {
+            clearInterval(intervalo);
+            // Si los minutos son mayores o iguales que 0.
+          } else if (minutos >= 0) {
+            // Entonces, si los segundos segundos son mayores que 0, va restando segundos.
+            if (segundos > 0) {
+              --segundos;
+              // Si los segundos son iguales a 0, resta 1 minuto y pone 59 segundos.
+            } else if (segundos == 0) {
+              --minutos;
+              segundos = 59;
+            }
+
+            // Va mostrando en pantalla el resultado.
+            // Si los segundos son menores que 10, muestra un cero antes
+            // (Esto último es para que parezca un reloj y se vea mejor el resultado).
+            if (segundos < 10) {
+              document.getElementById('temp').innerHTML = minutos + ':0' + segundos;
+            } else {
+              document.getElementById('temp').innerHTML = minutos + ':' + segundos;
+            }
+          }
+        }, 1000);
+      }
+      timer(1, 60);
+    </script>
+  </body>
+</html>

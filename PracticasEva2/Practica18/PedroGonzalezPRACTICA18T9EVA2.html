@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Actualiza Form JSON</title>
+  </head>
+  <body>
+    <form action="#" method="post"></form>
+    <script>
+      // Hacemos una petición a nuestro archivo json.
+      fetch('./info.json')
+        // Capturamos la respuesta.
+        .then((respuesta) => {
+          if (respuesta.ok) {
+            // Nos aseguramos que no haya errores
+            return respuesta.json(); // Devuelve un objeto en formato JSON
+          } else {
+            throw new Error('Los datos no llegaron bien');
+          }
+        })
+        // Una vez tenemos los datos, trabajamos con ellos.
+        .then((miJson) => {
+          // Pasamos el JSON a mapa para poder recorrerlo.
+          let miArray = Object.entries(JSON.parse(JSON.stringify(miJson)));
+          let myMap = new Map(miArray);
+          // Capturamos el formulario del documento.
+          let form = document.forms[0];
+          // Recorremos uno a uno cada par clave/valor del mapa.
+          for (let [nombre, valor] of myMap) {
+            // Creamos un label con los datos del nombre del elemento.
+            let label = document.createElement('label');
+            label.setAttribute('for', nombre);
+            label.setAttribute('id', nombre);
+            label.innerHTML = nombre + ' => ';
+            // Se lo asignamos al formulario.
+            form.appendChild(label);
+
+            // Creamos un input con los datos del nombre y el valor del elemento.
+            let input = document.createElement('input');
+            input.setAttribute('type', 'text');
+            input.setAttribute('id', nombre);
+            input.setAttribute('value', valor);
+            // Se lo asignamos al formulario.
+            form.appendChild(input);
+
+            // Añadimos un salto de línea al final.
+            let br1 = document.createElement('br');
+            form.appendChild(br1);
+          }
+        });
+    </script>
+  </body>
+</html>

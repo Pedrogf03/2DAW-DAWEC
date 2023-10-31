@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gestiona Form JSON</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="main">
+      <form action="#" method="post">
+        <label for="userId"><p>Id del Usuario:</p></label>
+        <br />
+        <input type="text" value="" name="userId" id="userId" />
+        <br />
+        <label for="id"><p>Id:</p></label>
+        <br />
+        <input type="text" value="" name="id" id="id" />
+        <br />
+        <label for="title"><p>Título:</p></label>
+        <br />
+        <input type="text" value="" name="title" id="title" />
+        <br />
+        <label for="body"><p>Cuerpo:</p></label>
+        <br />
+        <input type="text" value="" name="body" id="body" />
+        <br /><br />
+        <div class="buttons">
+          <button id="anterior">Anterior</button>
+          <button id="siguiente">Siguiente</button>
+        </div>
+      </form>
+    </div>
+    <script>
+      // Realizamos la petición.
+      fetch('http://jsonplaceholder.typicode.com/posts')
+        // Capturamos la respuesta.
+        .then((respuesta) => {
+          // Si la respuesta se recibe correctamente.
+          if (respuesta.ok) {
+            // Se devuelve en formato JSON.
+            return respuesta.json();
+          } else {
+            // Si no se reciben bien, se devuelve un error.
+            throw new Error('Los datos no llegaron bien');
+          }
+        })
+        // Ahora capturamos el JSON.
+        .then((miJson) => {
+          // Pasamos el JSON a Array.
+          let miArray = Object.entries(JSON.parse(JSON.stringify(miJson)));
+          // Esta variable nos servirá para cambiar entre valores dentro del array, para mostrar un dato u otro.
+          let num = 0;
+          // Recogemos del DOM el botón anterior y le añadimos un evento click.
+          document.getElementById('anterior').addEventListener('click', function (ev) {
+            // Quitamos el comportamiento por defecto.
+            ev.preventDefault();
+            if (num == 0) {
+              // Si num es 0, se le asigna el último valor del array.
+              num = miArray.length - 1;
+              // Si no, se le resta uno.
+            } else {
+              num--;
+            }
+            // Y se muestran los nuevos datos en el formulario.
+            document.getElementById('userId').value = miArray[num][1].userId;
+            document.getElementById('id').value = miArray[num][1].id;
+            document.getElementById('title').value = miArray[num][1].title;
+            document.getElementById('body').value = miArray[num][1].body;
+          });
+
+          // Recogemos del DOM el botón siguiente y le añadimos un evento click.
+          document.getElementById('siguiente').addEventListener('click', function (ev) {
+            // Quitamos el comportamiento por defecto.
+            ev.preventDefault();
+            if (num == miArray.length - 1) {
+              // Si num es el último valor del array, se le asigna 0.
+              num = 0;
+            } else {
+              // Si no, se le suma uno.
+              num++;
+            }
+            // Y se muestran los nuevos datos en el formulario.
+            document.getElementById('userId').value = miArray[num][1].userId;
+            document.getElementById('id').value = miArray[num][1].id;
+            document.getElementById('title').value = miArray[num][1].title;
+            document.getElementById('body').value = miArray[num][1].body;
+          });
+        });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  align-items: center;
+  height: 100vh;
+  justify-content: center;
+  align-content: center;
+  margin: 0 auto;
+}
+div * {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+td,
+th {
+  padding: 1vh 1vw;
+  text-align: center;
+}
+
+/* Clase que le da un formato concreto al texto*/
+.styletd {
+  border: 2px dashed blue;
+  border-radius: 10px;
+  background-color: aquamarine;
+}
+
+/* Clase que pone el texto en mayúsculas */
+.mayus {
+  font-variant: small-caps;
+}

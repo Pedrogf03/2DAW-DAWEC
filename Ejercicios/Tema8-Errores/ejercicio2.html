@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicio 2</title>
+  </head>
+  <body>
+    <p>Introduce un texto cualquiera:</p>
+    <input id="entrada" type="text" />
+    <button type="button" onclick="comprueba()">Comprobamos input</button>
+    <p id="parrafo"></p>
+    <script>
+      function comprueba() {
+        let m, x;
+        m = document.getElementById('parrafo');
+        m.innerHTML = '';
+        x = document.getElementById('entrada').value; //texto del usuario
+        try {
+          if (x == '') {
+            throw 'campo vacío.';
+          } else if (isNaN(x)) {
+            throw 'un carácter no númerico.';
+          } else if (x > 20) {
+            throw 'mayor que 20.';
+          } else if (x < 1) {
+            throw 'menor que 1.';
+          }
+        } catch (miError) {
+          m.innerHTML = 'La entrada es ' + miError;
+        }
+      }
+    </script>
+  </body>
+</html>

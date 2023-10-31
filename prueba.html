@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Datos online con async/await</title>
+  </head>
+  <body>
+    <main>
+      <ul></ul>
+    </main>
+    <script>
+      let data = {
+        title: 'Mi mensaje',
+        body: 'Mensaje de prueba',
+        userId: 5,
+      };
+      async function peticion() {
+        try {
+          const resp = await fetch('https://jsonplaceholder.typicode.com/posts', {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+              'Content-type': 'application/json; charset=UTF-8',
+            },
+          }); /* Hasta que no se ejecute el código anterior no pasamos al siguiente */
+
+          const miJSON = await resp.json(); /* Esperamos la respuesta para pasar a la siguiente línea */
+
+          console.log(miJSON); /*Si todo ha ido bien el código se ejecutará, de no ser así producirá un error que atrapará catch()*/
+        } catch (err) {
+          console.log(err);
+        }
+      }
+      peticion();
+    </script>
+  </body>
+</html>

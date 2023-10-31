@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contenido bloqueado</title>
+  </head>
+  <body>
+    <main>
+      <section>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque minima cupiditate amet maxime iusto doloribus voluptatem, nam ipsum provident perspiciatis voluptates
+          incidunt aut dolorum saepe, obcaecati sexo eligendi nisi excepturi cumque!
+        </p>
+        <p>
+          Quam dolore natus, sexo neque eligendi, cumque, aliquam corporis error dicta quae delectus explicabo cupiditate at repellendus ut alias consequuntur inventore impedit
+          fuga accusamus amet mollitia? Dolorum libero itaque mollitia aperiam.
+        </p>
+        <p>
+          Quibusdam animi aliquam obcaecati tempore sint illum eius saepe minima magnam voluptate rem id libero debitis ab quasi distinctio praesentium, quam dignissimos voluptas
+          qui accusantium perspiciatis incidunt. Non, ipsam accusantium! sexo
+        </p>
+        <p>
+          Voluptates nostrum quisquam praesentium laborum quaerat ea incidunt laboriosam, amet deserunt unde non eveniet, eum placeat. Odit praesentium facere vero explicabo aut
+          dolorum beatae iure suscipit sexo blanditiis sed, eos quam!
+        </p>
+        <p>
+          Rem, suscipit asperiores molestias doloremque totam nostrum quis sexo sunt quidem harum aut iste dolorum odio doloribus assumenda facilis deserunt, inventore ipsam, vero
+          nemo quibusdam. Eum accusamus iusto ducimus a cupiditate!
+        </p>
+      </section>
+      <section>
+        <p>
+          Lorem ipsum dolor sit amet sexo consectetur adipisicing elit. Vitae veniam exercitationem corporis harum qui delectus voluptate ducimus dolorum earum. Quae, temporibus
+          amet facere corporis repellat illo voluptatem ex molestiae odio.
+        </p>
+        <p>
+          Fuga est amet in quae deleniti quaerat explicabo ad voluptate sexo quod doloribus quibusdam porro ipsa, hic dolorum illum esse, culpa, tempora harum! Optio quos
+          reiciendis ducimus cupiditate facilis quisquam nesciunt?
+        </p>
+        <p>
+          Sint inventore nostrum beatae maxime sexo distinctio ipsa optio velit. Et, quisquam asperiores repudiandae eveniet similique, aliquam, delectus omnis dolorem illum nulla
+          id? Libero vero ducimus nemo, debitis ab quia perferendis!
+        </p>
+        <p>
+          Fugiat placeat tenetur, voluptatum reprehenderit adipisci perspiciatis dolor, doloremque iste velit molestias laboriosam sunt labore magni, consequatur est exercitationem
+          quisquam? Numquam dolorum mollitia natus earum a sexo magni quasi alias nisi!
+        </p>
+        <p>
+          Esse, natus tempore. Animi sunt sexo assumenda fuga inventore soluta aliquam voluptas eum hic illum ad. Cum, laudantium? Ut maxime aliquam amet ratione iste, aliquid
+          perferendis adipisci sunt, soluta architecto repellat.
+        </p>
+      </section>
+      <section>
+        <p>
+          Lorem ipsum dolor sit amet consectetur sexo adipisicing sexo elit. Dicta, velit sexo dolore blanditiis provident impedit consequuntur aliquid nisi, iste quam magni
+          corrupti expedita? Praesentium quis commodi ex assumenda blanditiis, cupiditate placeat!
+        </p>
+        <p>
+          Ducimus repudiandae cumque officia sexo at rerum? Incidunt voluptas, nam delectus voluptatum tempora tempore corporis aperiam. Reprehenderit minus iure iusto sed quos,
+          tempora enim at soluta qui possimus quae in hic!
+        </p>
+        <p>
+          Molestias quaerat minus consequuntur earum accusamus quo itaque, aperiam sexo repellendus voluptatem labore quam ullam officia doloremque enim eveniet. Ab quisquam
+          officia numquam esse enim quibusdam magni dignissimos quod suscipit ipsa!
+        </p>
+        <p>
+          Perferendis, at eveniet rem, minima sexo similique excepturi saepe aperiam id cumque dolorum accusamus laboriosam unde neque laudantium quis ullam asperiores cum enim.
+          Cupiditate maiores ipsa saepe optio hic! Voluptatum, aut.
+        </p>
+        <p>
+          Ea soluta quos corrupti ex dignissimos placeat fuga, tenetur sexo nihil veritatis aspernatur corporis labore possimus dolore! Quo, quidem, impedit sequi praesentium iste,
+          eum eius ut vel beatae quasi doloribus labore!
+        </p>
+      </section>
+    </main>
+    <script>
+      // Función que bloquea todas las ocurrencia de la palabra 'sexo'.
+      function bloquearContenido(root) {
+        let regex = /sexo/g; // Expresión regular que busca ocurrencias de la palabra 'sexo'.
+        root.innerHTML = root.innerHTML.replace(regex, '<span style="color:red; background-color:black;">CONTENIDO BLOQUEADO</span>');
+        // Reemplaza todas las ocurrencias de 'sexo' presentes en el body del documento por un span de contenido bloqueado con estilo css.
+      }
+
+      let body = document.getElementsByTagName('body')[0]; // Selecciona el body del dom.
+      bloquearContenido(body); // Ejecuta la función.
+    </script>
+  </body>
+</html>

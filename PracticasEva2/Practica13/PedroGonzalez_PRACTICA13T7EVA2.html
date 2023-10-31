@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>¡Arrástrame!</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+      }
+      main {
+        display: flex;
+        justify-content: space-evenly;
+        width: 100%;
+        padding-top: 100px;
+      }
+      main div {
+        border: 1px solid black;
+        height: 100px;
+        width: 200px;
+        padding: 20px;
+      }
+      div#arrastrable {
+        background-color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <!-- Importante añadir el draggable="true" para que el elemento pueda ser arrastrable -->
+      <div id="arrastrable" draggable="true"><p>Soy arrastrable</p></div>
+      <div id="destino"><p>Soy el destino</p></div>
+    </main>
+    <script>
+      // Se guarda el div que queremos arrastrar.
+      let drag = document.getElementById('arrastrable');
+      // Se guarda el div que de destino.
+      let destino = document.getElementById('destino');
+
+      // Se añade un evento que courre mientras que se arrastra la primera acapa.
+      drag.addEventListener('drag', function () {
+        drag.style.opacity = '50%'; // Pone la opacidad al 50%.
+      });
+
+      // Se añade un evento a la segunda capa que ocurre mientras que arrastramos la primera capa sobre esta.
+      destino.addEventListener('dragover', function (ev) {
+        ev.preventDefault(); // Elimina el comportamiento por defecto.
+        destino.style.backgroundColor = 'red'; // Pone el fondo de la segunda capa en rojo.
+      });
+      // Se añade un evento a la segunda capa que ocurre cuando el elemento arrastrable sale del destino.
+      destino.addEventListener('dragleave', function () {
+        destino.style.backgroundColor = 'white'; // Se pone el fondo de la segunda capa en blanco.
+      });
+
+      // Se añade un evento a la segunda capa que ocurre cuando soltamos el elemento arrastrable sobre el destino.
+      destino.addEventListener('drop', function () {
+        destino.style.backgroundColor = 'yellow'; // Se pone el fondo en amarillo.
+        destino.innerHTML = '<p>¡Lo has logrado!</p>'; // Se cambia el contenido de la capa.
+        document.getElementsByTagName('main')[0].removeChild(drag); // Se elimina la primera capa.
+      });
+    </script>
+  </body>
+</html>

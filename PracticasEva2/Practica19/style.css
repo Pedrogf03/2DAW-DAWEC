@@ -1,0 +1,51 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+div.main {
+  width: 100vw;
+  height: 100vh;
+  background-color: lightgray;
+
+  display: grid;
+  place-items: center;
+}
+
+form {
+  display: grid;
+}
+
+label {
+  font-size: 1.5em;
+}
+input {
+  width: 300px;
+  height: 30px;
+}
+
+div.buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+button {
+  cursor: pointer;
+  border-radius: 10px;
+  padding: 5px;
+  margin-top: 10px;
+  border-bottom: 2px solid #0039a6;
+  border-left: 2px solid #0039a6;
+  border-top: 2px solid #318ce7;
+  border-right: 2px solid #318ce7;
+  background: #00bfff;
+}
+
+button#anterior {
+  justify-self: start;
+}
+button#siguiente {
+  place-self: end;
+}

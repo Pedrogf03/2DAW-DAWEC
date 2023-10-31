@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teclas CambiaFondo</title>
+    <style>
+      /* Estilos de la página */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      main {
+        width: 100%;
+        height: 100vh;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #000;
+      }
+      p {
+        font-size: 3em;
+        color: white;
+        text-shadow: 2px 2px 5px black, -2px 2px 5px black, 2px -2px 5px black, -2px -2px 5px black;
+      }
+    </style>
+  </head>
+  <body>
+    <main id="fondo">
+      <p>¡Pulsa Alt+F12 para cambiar el fondo!</p>
+    </main>
+    <script>
+      // Se añade un evento al documento al pulsar una tecla.
+      document.addEventListener('keydown', function (ev) {
+        // Cogemos el elemento main.
+        let main = document.getElementById('fondo');
+        // Si las teclas que se han pulsado son la tecla 'Alt' y 'F12'.
+        if (ev.altKey && ev.key == 'F12') {
+          // Al main se le aplica un fondo que nos proporciona aleatoriamente la url.
+          main.style.background = "url('https://source.unsplash.com/random')";
+          // Le ponemos de tamaño el 100% tanto de ancho como de alto.
+          main.style.backgroundSize = '100% 100%';
+        }
+      });
+    </script>
+  </body>
+</html>

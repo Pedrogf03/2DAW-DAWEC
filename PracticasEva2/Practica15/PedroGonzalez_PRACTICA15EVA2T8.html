@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prometiendo</title>
+  </head>
+  <body>
+    <button id="btn">Abortar!!!</button>
+    <script>
+      // Función que cronometra el tiempo que se le pase como parámetro.
+      function temporizador(tiempo) {
+        // Se crea una promesa.
+        let promesa = new Promise((bien, mal) => {
+          // Variable que aumenta en 1 cada segundo para contar el tiempo.
+          let contador = 0;
+          // Intervalo que suma 1 a la variable anterior cada 1 segundo.
+          let intervalo = setInterval(function () {
+            // Dentro del intervalo, aumenta la variable.
+            contador++;
+            // Si la variable es igual que el tiempo introducido.
+            if (contador == tiempo) {
+              // Se devuelve la promesa resuelta con un mensaje.
+              bien('Tiempo concluido');
+              // Se para el intervalo.
+              clearInterval(intervalo);
+            }
+            // El intervalo se ejecuta cada 1000 milisegundos (1 segundo).
+          }, 1000);
+          // Se le añade un evento al botón.
+          document.getElementById('btn').addEventListener('click', function () {
+            // Al hacer click en el botón, se devuelve la promesa rechazada con un mensaje.
+            mal('Acción interrumpida por el usuario');
+          });
+        })
+          // Entonces, si la respuesta ha sido bien, muestra el mensaje de la promesa resuelta.
+          .then(function (mensaje) {
+            document.body.innerHTML = '<p>' + mensaje + '</p>';
+          })
+          // Pero si la respuesta ha sido mal, muestra el mensaje de la promesa rechazada.
+          .catch(function (mensaje) {
+            document.body.innerHTML = '<p>' + mensaje + '</p>';
+          });
+      }
+
+      // Llamada a la función con una espera de 10 segundos.
+      temporizador(10);
+    </script>
+  </body>
+</html>

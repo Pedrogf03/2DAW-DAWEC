@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tus datos</title>
+  </head>
+  <body>
+    <p id="p"></p>
+    <form action="http://localhost/Cliente/PracticasEva2/Practica20/form.php" method="post">
+      <label for="email">Correo electrónico</label><br />
+      <input type="text" name="email" id="email" /><br />
+      <label for="passwd">Contraseña</label><br />
+      <input type="password" name="passwd" id="passwd" /><br />
+      <br />
+      <button type="submit" id="submit">Enviar</button>&nbsp;<button type="reset">Reset</button>
+    </form>
+    <script>
+      var miForm = document.forms[0];
+
+      document.getElementById('submit').addEventListener('click', function (ev) {
+        ev.preventDefault();
+
+        var data = new FormData(miForm);
+
+        for (let [dato, valor] of data) {
+          console.log(`${dato}=${valor}`);
+        }
+
+        fetch(miForm.getAttribute('action'), {
+          method: miForm.getAttribute('method'),
+          body: data,
+        })
+          .then((resultado) => {
+            return resultado.json();
+          })
+          .then((datos) => {
+            console.log(datos);
+          })
+          .catch((error) => {
+            document.getElementById('p').textContent = 'Error: ' + error;
+          });
+      });
+    </script>
+  </body>
+</html>

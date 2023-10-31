@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ratón Arrastra Colores</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        height: 100vh;
+        width: 100vw;
+      }
+      div {
+        height: 50%;
+        width: 50%;
+        border: 2px solid black;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="div"></div>
+    <script>
+      // Cogemos el elemento div.
+      let div = document.getElementById('div');
+
+      // Le añadimos varios eventos.
+
+      // Evento que cambia el fondo del div a verde cuando el ratón entre en el elemento.
+      div.addEventListener('mouseenter', function () {
+        div.style.backgroundColor = 'green';
+      });
+
+      // Evento que quita el fondo del div cuando el ratón salga del elemento.
+      div.addEventListener('mouseleave', function () {
+        div.style.background = 'none';
+      });
+
+      // Evento que cambia el fondo del div dependiendo del botón del ratón que se pulse.
+      div.addEventListener('mousedown', function (ev) {
+        // Si el botón del ratón es el principal (0), se cambia el fondo a rojo.
+        if (ev.button == 0) {
+          div.style.backgroundColor = 'red';
+
+          // Si el botón del ratón es el secundario (2), se cambia el fondo a azul.
+        } else if (ev.button == 2) {
+          div.style.backgroundColor = 'blue';
+        }
+      });
+
+      // Evento que vuelve a poner el fondo del div en verde al levantar el botón del ratón.
+      div.addEventListener('mouseup', function () {
+        div.style.background = 'green';
+      });
+
+      // Se desactiva el menu contextual que aparece por defecto al hacer click derecho sobre el div.
+      div.oncontextmenu = function () {
+        return false;
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CírculosCÍRCulOSCÍRCULOS!!!</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      // Añade un evento al hacer click sobre el documento.
+      document.addEventListener('click', function (ev) {
+        // Crea un div llamado circulo.
+        let circulo = document.createElement('div');
+        // Genera un diámetro aleatorio entre 10 y 300 para el ancho del div.
+        let diam = parseInt(Math.random() * 290 + 10);
+        // Le ponemos al div de ancho el diámetro generado.
+        circulo.style.width = diam + 'px';
+        // Le ponemos al div de alto el diámetro generado.
+        circulo.style.height = diam + 'px';
+        // Le ponemos al div los bordes redondos, para que sea un círculo.
+        circulo.style.borderRadius = '50%';
+        // Le ponemos al div posición absoluta, para poder colocarlo donde queramos de la pantalla.
+        circulo.style.position = 'absolute';
+        // Le ponemos al div las coordenadas X e Y de donde se ha hecho click en pantalla,
+        // restando el radio del cículo para que el ratón aparezca en el medio del mismo.
+        circulo.style.top = ev.clientY - diam / 2 + 'px';
+        circulo.style.left = ev.clientX - diam / 2 + 'px';
+        // Le ponemos al div un color aleatorio, generando 3 números entre 0 y 256.
+        circulo.style.backgroundColor = 'rgb(' + parseInt(Math.random() * 256) + ', ' + parseInt(Math.random() * 256) + ', ' + parseInt(Math.random() * 256) + ')';
+        // Por último, añadimos el círculo al body del documento.
+        document.body.appendChild(circulo);
+      });
+    </script>
+  </body>
+</html>
